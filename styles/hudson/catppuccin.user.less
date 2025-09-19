@@ -1,0 +1,317 @@
+/* ==UserStyle==
+@name Hudson Catppuccin
+@namespace github.com/catppuccin/userstyles/styles/hudson
+@homepageURL https://github.com/catppuccin/userstyles/tree/main/styles/hudson
+@version 2025.09.17
+@updateURL https://github.com/baizeyv/userstyles/raw/feat/baidu/styles/hudson/catppuccin.user.less
+@supportURL https://github.com/baizeyv/userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Ahudson
+@description Soothing pastel theme for hudson
+@author Catppuccin
+@license MIT
+
+@preprocessor less
+@var select lightFlavor "Light Flavor" ["latte:Latte*", "frappe:Frappé", "macchiato:Macchiato", "mocha:Mocha"]
+@var select darkFlavor "Dark Flavor" ["latte:Latte", "frappe:Frappé", "macchiato:Macchiato", "mocha:Mocha*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
+==/UserStyle== */
+
+@import "https://userstyles.catppuccin.com/lib/lib.less";
+
+@-moz-document url-prefix("http://192.168.1.42:9090/") {
+  /* This section applies the light/dark themes automatically based on the user's system theme.
+     Use the below example CSS to start if the website you are theming doesn't have a light/dark mode toggle.
+     For an actual example of this, see https://github.com/catppuccin/userstyles/blob/39288b593278e5efa48007d5fc001292cf910672/styles/brave-search/catppuccin.user.css#L16-L29.
+
+     Meowody
+  */
+  :root {
+    @media (prefers-color-scheme: light) {
+      #catppuccin(@lightFlavor);
+    }
+    @media (prefers-color-scheme: dark) {
+      #catppuccin(@darkFlavor);
+    }
+  }
+
+  /* If the website you are theming *does* have a light/dark mode toggle,
+     you can conditionally enable light/dark flavors by targeting whatever
+     attribute that website uses to indicate the theme. *The example below gives you an idea of what
+     to look for. The website you are theming may use a class-based approach (e.g. :root.theme-dark),
+     or any of the myriad of other methods like this.*
+     Use the below example CSS to start if this is the case.
+     For an actual example of this, see https://github.com/catppuccin/userstyles/blob/39288b593278e5efa48007d5fc001292cf910672/styles/youtube/catppuccin.user.css#L21-L30.
+  */
+  :root[data-theme="dark"] {
+    #catppuccin(@darkFlavor);
+  }
+  :root[data-theme="light"] {
+    #catppuccin(@lightFlavor);
+  }
+
+  #catppuccin(@flavor) {
+    #lib.palette();
+    #lib.defaults();
+
+    /* Start styling your website here: */
+    background-color: @base;
+
+    body {
+      background: @base;
+    }
+    h1,
+    h2 {
+      color: @mauve;
+    } // 空格
+    pangu {
+      display: none;
+    }
+    .desc {
+      color: @subtext0;
+    }
+    .task a {
+      text-decoration: none;
+      color: @text;
+      background: @surface0;
+      padding: 5px;
+      border: 1.5px solid @surface1;
+      border-radius: 4px;
+      display: inline-block;
+      width: 50%;
+      &:hover {
+        border-color: @surface2;
+      }
+    }
+    /* 图标部分 */
+    .task a:first-child {
+      background: none;
+      border: none;
+      padding: none;
+      display: normal;
+      width: auto;
+    }
+    #buildHistoryDiv {
+      border: 1.5px solid @surface1;
+      padding: 10px;
+    }
+
+    #buildHistoryDiv a {
+      color: @text;
+      text-decoration: none;
+      &:visited {
+        color: @lavender;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .healthReportDetails {
+      background: @crust !important;
+      border: 1.5px solid @surface2 !important;
+    }
+    .healthReportDetails > table > thead > tr {
+      background: @crust !important;
+    }
+    td.pane-header {
+      background-color: @mauve;
+      border-radius: 5px;
+      color: @crust;
+    }
+    td.pane {
+      color: @text;
+    }
+    .build-rss {
+      background: @base !important;
+    }
+    .build-rss > td:first-child {
+      background: @mauve;
+      border-radius: 5px;
+    }
+    .build-row {
+      border: 1px solid @surface0;
+    }
+    .build-row > td:first-child {
+      color: @lavender;
+    }
+
+    #projectStatusDiv {
+      background-color: @base;
+      border-right-color: @surface1;
+      border-left-color: @surface1;
+      border-bottom-color: @surface1;
+    }
+    #viewList td.filler {
+      border-bottom: solid 1px @surface1;
+    }
+    #viewList td.inactive {
+      border: 1px solid @surface1;
+      border-bottom-color: @surface1;
+      &:hover {
+        background: @surface0;
+      }
+    }
+    #viewList > tbody > tr:nth-child(2) > td:first-child {
+      border-bottom: 1px solid @surface1 !important;
+    }
+    #viewList td.active {
+      border: 1px solid @surface1;
+      background: @surface0;
+    }
+
+    .graph {
+      border: 1px solid @surface1;
+      &:hover {
+        border-color: @surface2;
+      }
+    }
+    .graph > img {
+      filter: invert(1) brightness(3) hue-rotate(200deg);
+    }
+
+    #left-top-nav {
+      color: @surface0;
+    }
+    #left-top-nav a,
+    #right-top-nav a {
+      color: @surface0;
+      padding: 2px;
+      text-decoration: none;
+      &:hover {
+        color: @crust;
+        text-decoration: underline;
+      }
+    }
+    #main-table {
+      background-image: none !important;
+      background-repeat: no-repeat !important;
+      background: linear-gradient(to bottom, @mauve 0%, fade(@mauve, 65%) 50px, fade(@mauve, 0%) 100px) !important;
+    }
+    /* 左上角圆角图 */
+    #side-panel + td > div > img {
+      display: none;
+    }
+    /* 圆角图右侧区域 */
+    #main-panel-rounded-corner-spacer {
+      display: none;
+    }
+    /* 恢复去掉的圆角图的间隙 */
+    #main-panel {
+      padding-top: 30px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    #main-panel a {
+      color: @text;
+      text-decoration: none;
+      &:visited {
+        color: @lavender;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .bigtable {
+      color: @mauve;
+    }
+    .bigtable tr {
+      &:hover {
+        background: @surface0;
+      }
+    }
+    #projectstatus th {
+      background-color: @surface0;
+    }
+    #viewList {
+      color: @text;
+    }
+    table.sortable span.sortarrow {
+      color: @text;
+    }
+
+    #buildQueue {
+      border: 1.5px solid @surface1;
+      &:hover {
+        border-color: @surface2;
+      }
+    }
+    #executors {
+      border: 1.5px solid @surface1;
+      &:hover {
+        border-color: @surface2;
+      }
+    }
+    #executors a {
+      color: @blue;
+      text-decoration: none;
+      &:visited {
+        color: @lavender;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    div.header {
+      background: @mauve !important;
+      border-radius: 5px;
+    }
+    th.pane {
+      background: fade(@mauve, 70%) !important;
+      color: @base;
+    }
+    div.header a {
+      color: @base !important;
+      &:hover {
+        color: @crust !important;
+        text-decoration: underline !important;
+      }
+    }
+    th.pane a {
+      color: @base !important;
+      &:hover {
+        color: @crust !important;
+        text-decoration: underline !important;
+      }
+    }
+    
+    .ui-button {
+      background: @green;
+      color: @base;
+      border: 1.5px solid @surface0;
+      border-radius: 5px;
+      padding: 2px;
+      
+      &:hover {
+        text-decoration: underline !important;
+      }
+    }
+    
+    #description {
+      color: @text;
+    }
+
+    /* 主区域 */
+    #side-panel + td > div:first-child + div {
+      height: auto !important;
+      margin-left: 10px;
+      margin-right: 5px;
+    }
+    #main-panel-container {
+      background: @mantle !important;
+      border: 1.5px solid @surface1;
+      border-radius: 15px;
+    }
+    /* 底部渐变条 */
+    .poweredByBand {
+      background: linear-gradient(to bottom, fade(@mauve, 50%) 0%, fade(@mauve, 75%) 50%, @mauve 100%) !important;
+    }
+    .poweredByText {
+      color: @crust;
+    }
+    .footerArea {
+      color: @text;
+    }
+    #footer-husonversion-panel a {
+      color: @blue;
+    }
+  }
+}
