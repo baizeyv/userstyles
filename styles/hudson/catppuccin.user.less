@@ -14,7 +14,6 @@
 @var select darkFlavor "Dark Flavor" ["latte:Latte", "frappe:Frappé", "macchiato:Macchiato", "mocha:Mocha*"]
 @var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "pink:Pink", "mauve:Mauve*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:Blue", "sapphire:Sapphire", "sky:Sky", "lavender:Lavender", "subtext0:Gray"]
 ==/UserStyle== */
-
 @import "https://userstyles.catppuccin.com/lib/lib.less";
 
 @-moz-document url-prefix("http://192.168.1.42:9090/") {
@@ -65,6 +64,81 @@
     pangu {
       display: none;
     }
+    input {
+      background: @surface0;
+      color: @text;
+      border: 1px solid @surface1;
+      border-radius: 3px;
+      &:focus {
+        outline: none;
+        border: 1px solid @surface2;
+      }
+    }
+    textarea {
+      background: @surface0;
+      color: @text;
+      border: 1px solid @surface1;
+      border-radius: 3px;
+      border-bottom: none;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      &:focus {
+        outline: none;
+        border: 1px solid @surface2;
+        border-bottom: none;
+      }
+    }
+    DIV.textarea-handle {
+      background: @surface0;
+      border-top: none;
+      border-left: 1px solid @surface1;
+      border-right: 1px solid @surface1;
+      border-bottom: 1px solid @surface1;
+      border-bottom-right-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+    select {
+      background: @surface0;
+      border: 1px solid @surface1;
+      border-radius: 3px;
+      color: @text;
+      &:focus {
+        outline: none;
+        border: 1px solid @surface2;
+      }
+    }
+    .yui-skin-sam .yui-menu-button button {
+      background: @surface0;
+      background-image: none;
+      color: @text;
+    }
+    .yui-skin-sam .yui-button-active {
+      border-color: @surface1;
+    }
+    .yui-skin-sam .yui-button-hover {
+      border-color: @surface2;
+    }
+    .yui-skin-sam .yuimenu .bd {
+      background: @base;
+      border: 1px solid @surface1;
+    }
+    .yui-skin-sam .yuimenu .bd li {
+      &:hover {
+        background: @surface0;
+      }
+    }
+    .config-section {
+      background: @surface0;
+      color: @blue;
+      border-radius: 3px;
+      border-bottom: 1px solid @mauve;
+    }
+    input[type="radio"] {
+      filter: invert(1) hue-rotate(210deg);
+    }
+    input[type="checkbox"] {
+      filter: invert(1) hue-rotate(210deg);
+    }
     .desc {
       color: @subtext0;
     }
@@ -111,6 +185,12 @@
     .healthReportDetails > table > thead > tr {
       background: @crust !important;
     }
+    .pane-header > div > a {
+      color: @base !important;
+      &:hover {
+        color: @crust !important;
+      }
+    }
     td.pane-header {
       background-color: @mauve;
       border-radius: 5px;
@@ -126,11 +206,30 @@
       background: @mauve;
       border-radius: 5px;
     }
+    .build-rss a {
+      color: @base !important;
+      &:hover {
+        color: @crust !important;
+      }
+    }
     .build-row {
       border: 1px solid @surface0;
     }
     .build-row > td:first-child {
       color: @lavender;
+    }
+    #main-panel > div {
+      background: none !important;
+      color: @text;
+    }
+    #main-panel > table > tbody > tr:nth-child(2) {
+      color: @text;
+    }
+    #main-panel > ol > li {
+      color: @text;
+    }
+    #main-panel > h2 > a {
+      color: @blue;
     }
 
     #projectStatusDiv {
@@ -221,6 +320,9 @@
     #projectstatus th {
       background-color: @surface0;
     }
+    #buildStatus th {
+      background-color: @surface0;
+    }
     #viewList {
       color: @text;
     }
@@ -272,21 +374,65 @@
         text-decoration: underline !important;
       }
     }
-    
+
     .ui-button {
       background: @green;
       color: @base;
       border: 1.5px solid @surface0;
       border-radius: 5px;
       padding: 2px;
-      
+
       &:hover {
         text-decoration: underline !important;
       }
     }
-    
+
     #description {
       color: @text;
+    }
+
+    #login-field A {
+      color: @base;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+        color: @crust;
+      }
+    }
+    #search-box {
+      color: @text;
+      background: @surface0;
+      border: 1.5px solid @surface1;
+      border-radius: 5px;
+      padding-bottom: 7px;
+      padding-left: 5px;
+      padding-top: 5px;
+      &:focus {
+        outline: none;
+      }
+    }
+    #search-box-completion .yui-ac-content {
+      background: @surface0;
+      border: 1px solid @surface1;
+    }
+    #search-box-completion LI {
+      color: @text;
+      padding-left: 5px;
+      &:hover {
+        background: @surface1;
+      }
+    }
+    #search-box-completion LI.yui-ac-highlight {
+      background: @surface1;
+    }
+    div#projectStatusDiv + table {
+      color: @text;
+    }
+    div#projectStatusDiv + table a {
+      color: @blue !important;
+      &:visited {
+        color: @mauve !important;
+      }
     }
 
     /* 主区域 */
